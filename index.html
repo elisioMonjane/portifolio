@@ -32,6 +32,41 @@
 		right: 20px;
 		z-index: 9999;
 	}
+		.relogio{
+	font-family: "lora-regular", serif;
+	color:#ffff;
+	background-color: #FF0077;
+	display: flex;
+	align-items: center;
+	justify-content:space-around;
+	text-align: center;
+    height: 100px;
+	width: 550px;
+	border-radius: 3px;
+	box-shadow: 0px 8px 10px rgba(0 ,0, 0, .5);
+	
+}
+.relogio div{
+	height: 90px;
+	width: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #ffff;
+	background: rgba(5, 5, 5, .9);
+	font-size: 15px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, .7);
+	border-radius: 7px;
+	letter-spacing: 3px;
+}
+.relogio span{
+	font-weight: bold;
+	font-size: 30px;
+}
+.relogio span.tempo{
+	font-size: 10px;
+}
 </style>
 <body id="top">
 
@@ -97,6 +132,20 @@
       	</ul> <!-- /intro-social -->      	
 
    </section> <!-- /intro -->
+     <div class="relogio">
+		<div>
+			<span id="horas">00</span>
+			<span class="tempo">Horas</span>
+		</div>
+		<div>
+			<span id="minutos">00</span>
+			<span class="tempo">Minutos</span>
+		</div>
+		<div>
+			<span id="segundos">00</span>
+			<span class="tempo">Segundos</span>
+		</div>
+	</div> 
   <!-- about section
    ================================================== -->
    <section id="about">  
@@ -760,6 +809,25 @@
    <script src="js/plugins.js"></script>
    <script src="js/main.js"></script>
 
+      <script>
+	const horas= document.getElementById('horas');
+	const minutos= document.getElementById('minutos');
+	const segundos= document.getElementById('segundos');
+
+const relogio= setInterval(function time(){
+ let dateToday= new Date();
+ let hr= dateToday.getHours();
+ let min= dateToday.getMinutes();
+ let s=dateToday.getSeconds();
+
+ if(hr < 10) hr= '0'+hr;
+ if(min < 10) min= '0'+min;
+ if(s < 10) s= '0'+s;
+ horas.textContent = hr;
+ minutos.textContent = min;
+ segundos.textContent = s;
+	})
+   </script>
 </body>
 
 </html>
